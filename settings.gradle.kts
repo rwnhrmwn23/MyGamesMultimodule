@@ -13,6 +13,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MyGamesMultimodule"
+rootProject.name = "MyGamesMultiModule"
 include(":app")
- 
+include(":core:network")
+include(":core:local")

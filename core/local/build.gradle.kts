@@ -1,25 +1,19 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.com.android.application)
+    alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    kotlin("kapt") version "1.8.0"
 }
 
 android {
-    namespace = "com.onedev.mygamesmultimodule"
+    namespace = "com.onedev.local"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.onedev.mygamesmultimodule"
         minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildFeatures {
-        viewBinding = true
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -41,13 +35,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:network"))
-    implementation(project(":core:local"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
-    implementation(libs.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -56,7 +47,9 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.android)
 
-    // Lifecycle
-    implementation(libs.lifecycle.livedata)
-    implementation(libs.lifecycle.viewmodel)
+    // Room components
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    kapt(libs.room.kapt)
+    androidTestImplementation(libs.room.test)
 }
