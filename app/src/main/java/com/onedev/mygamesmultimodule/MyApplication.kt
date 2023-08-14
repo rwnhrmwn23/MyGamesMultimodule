@@ -1,9 +1,10 @@
 package com.onedev.mygamesmultimodule
 
 import android.app.Application
-import com.onedev.network.di.networkModule
-import com.onedev.network.di.repositoryNetworkModule
-import com.onedev.network.di.useCaseNetworkModule
+import com.onedev.di.databaseModule
+import com.onedev.di.networkModule
+import com.onedev.di.repositoryModule
+import com.onedev.di.useCaseModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -19,8 +20,9 @@ class MyApplication: Application() {
             modules(
                 listOf(
                     networkModule,
-                    repositoryNetworkModule,
-                    useCaseNetworkModule,
+                    databaseModule,
+                    repositoryModule,
+                    useCaseModule,
                     viewModelModule,
                 )
             )

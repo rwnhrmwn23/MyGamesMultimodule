@@ -1,27 +1,28 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.com.android.application)
+    alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.com.google.devtools.ksp)
 }
 
 android {
-    namespace = "com.onedev.mygamesmultimodule"
+    namespace = "com.onedev.network"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.onedev.mygamesmultimodule"
         minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+
+        buildConfigField("String", "BASE_URL",  "\"https://api.rawg.io/api/\"")
+        buildConfigField("String", "API_KEY_NAME",  "\"key\"")
+        buildConfigField("String", "API_KEY_VALUE",  "\"d084045ca6164bbeb97021752a930416\"")
     }
 
     buildFeatures {
-        viewBinding = true
+        buildConfig = true
     }
-
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -41,21 +42,29 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
-
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
-    implementation(libs.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    // Retrofit
+    implementation(libs.retrofit2)
+    implementation(libs.retrofit2.converter.gson)
+    implementation(libs.okhttp)
 
     // Koin
     implementation(libs.koin.core)
     implementation(libs.koin.android)
 
-    // Lifecycle
-    implementation(libs.lifecycle.livedata)
-    implementation(libs.lifecycle.viewmodel)
+    // Coroutines Flow
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
+
+    // Room components
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.kapt)
+    androidTestImplementation(libs.room.test)
 }
