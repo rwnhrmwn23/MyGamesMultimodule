@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/gamesFragment">
+
+    <fragment
+        android:id="@+id/gamesFragment"
+        android:name="com.onedev.mygamesmultimodule.games.GamesFragment"
+        android:label="fragment_games"
+        tools:layout="@layout/fragment_games" >
+        <action
+            android:id="@+id/action_gamesFragment_to_gamesDetailFragment"
+            app:destination="@id/gamesDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.onedev.mygamesmultimodule.favorite.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment2_to_gamesDetailFragment"
+            app:destination="@id/gamesDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gamesDetailFragment"
+        android:name="com.onedev.mygamesmultimodule.games_detail.GamesDetailFragment"
+        android:label="fragment_games_detail"
+        tools:layout="@layout/fragment_games_detail" >
+        <argument
+            android:name="gamesId"
+            app:argType="integer" />
+    </fragment>
+</navigation>

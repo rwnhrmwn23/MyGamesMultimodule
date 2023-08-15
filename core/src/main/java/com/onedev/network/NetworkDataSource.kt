@@ -1,4 +1,4 @@
-package com.onedev.source
+package com.onedev.network
 
 import com.onedev.data.model.Games
 import com.onedev.utils.ApiResponse
@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.Flow
 class NetworkDataSource(
     private val apiService: ApiService
 ) {
-    suspend fun games(): Flow<ApiResponse<Games>> {
-        return apiService.games().asFlowStateEvent {
+    suspend fun games(search : String): Flow<ApiResponse<Games>> {
+        return apiService.games(search).asFlowStateEvent {
             it.mapToGames()
         }
     }

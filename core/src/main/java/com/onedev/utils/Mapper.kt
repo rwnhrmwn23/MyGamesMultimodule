@@ -20,9 +20,9 @@ object Mapper {
                 Games.Result(
                     background_image = it?.background_image,
                     id = it?.id,
-                    name = it?.background_image,
+                    name = it?.name,
                     rating = it?.rating,
-                    released = it?.background_image,
+                    released = it?.released,
                     short_screenshots = gamesScreenshot.toString()
                 )
             )

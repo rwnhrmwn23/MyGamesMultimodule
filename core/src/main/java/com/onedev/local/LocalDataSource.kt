@@ -1,4 +1,4 @@
-package com.onedev.local.source
+package com.onedev.local
 
 import com.onedev.local.database.dao.GamesDao
 import com.onedev.local.database.entity.GamesEntity

@@ -10,12 +10,14 @@ interface ApiService {
 
     @GET(GAMES)
     suspend fun games(
+        @Query(SEARCH) search : String,
         @Query(KEY) key : String? = API_KEY_VALUE
     ): Response<GamesResponse>
 
 
     companion object {
         const val KEY = "key"
+        const val SEARCH = "search"
         const val GAMES = "games"
     }
 }

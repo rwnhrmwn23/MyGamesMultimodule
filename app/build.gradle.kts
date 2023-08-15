@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    id("androidx.navigation.safeargs.kotlin")
+    kotlin("kapt") version "1.8.0"
 }
 
 android {
@@ -20,6 +22,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 
     buildTypes {
@@ -58,4 +61,14 @@ dependencies {
     // Lifecycle
     implementation(libs.lifecycle.livedata)
     implementation(libs.lifecycle.viewmodel)
+
+    // Navigation
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+
+    // Coil
+    implementation(libs.coil)
+
+    // Skeleton
+    implementation(libs.skeleton)
 }

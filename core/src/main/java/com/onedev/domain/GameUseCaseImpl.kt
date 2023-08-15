@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.Flow
 class GameUseCaseImpl(
     private val gameRepository: GameRepository
 ) : GamesUseCase {
-    override fun games(): Flow<StateEvent<Games>> {
-        return gameRepository.games()
+    override fun games(search : String): Flow<StateEvent<Games>> {
+        return gameRepository.games(search)
     }
 
     override suspend fun addGames(games: Games.Result) {

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MyGamesMultimodule</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">Search</string>
+    <string name="games_for_you">Games for you</string>
+    <string name="released_date">Released date %s</string>
+    <string name="home">Home</string>
+    <string name="favorite">Favorite</string>
+    <string name="count_found_game">Search %s Games</string>
+    <string name="games_not_found">Games Not Found </string>
+    <string name="back_button">Back button</string>
 </resources>

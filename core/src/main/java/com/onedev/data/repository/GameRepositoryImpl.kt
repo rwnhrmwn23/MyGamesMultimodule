@@ -1,8 +1,8 @@
 package com.onedev.data.repository
 
 import com.onedev.data.model.Games
-import com.onedev.local.source.LocalDataSource
-import com.onedev.source.NetworkDataSource
+import com.onedev.local.LocalDataSource
+import com.onedev.network.NetworkDataSource
 import com.onedev.utils.ApiResponse
 import com.onedev.utils.Mapper.mapDomainToEntity
 import com.onedev.utils.Mapper.mapEntitiesToDomains
@@ -15,12 +15,11 @@ class GameRepositoryImpl(
     private val networkDataSource: NetworkDataSource,
     private val localDataSource: LocalDataSource,
 ): GameRepository {
-    override fun games(): Flow<StateEvent<Games>> =
+    override fun games(search : String): Flow<StateEvent<Games>> =
         object : NetworkResource<Games>() {
             override suspend fun createCall(): Flow<ApiResponse<Games>> {
-                return networkDataSource.games()
+                return networkDataSource.games(search)
             }
-
         }.asFlow()
 
     override suspend fun addGames(games: Games.Result) {

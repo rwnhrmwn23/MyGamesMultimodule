@@ -5,7 +5,7 @@ import com.onedev.utils.StateEvent
 import kotlinx.coroutines.flow.Flow
 
 interface GamesUseCase {
-    fun games(): Flow<StateEvent<Games>>
+    fun games(search : String): Flow<StateEvent<Games>>
 
     suspend fun addGames(games: Games.Result)
 

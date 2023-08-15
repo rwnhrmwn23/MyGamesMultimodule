@@ -6,10 +6,10 @@ import com.onedev.data.repository.GameRepositoryImpl
 import com.onedev.domain.GameUseCaseImpl
 import com.onedev.domain.GamesUseCase
 import com.onedev.local.database.GameDatabase
-import com.onedev.local.source.LocalDataSource
+import com.onedev.local.LocalDataSource
 import com.onedev.network.BuildConfig
 import com.onedev.network.service.ApiService
-import com.onedev.source.NetworkDataSource
+import com.onedev.network.NetworkDataSource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext

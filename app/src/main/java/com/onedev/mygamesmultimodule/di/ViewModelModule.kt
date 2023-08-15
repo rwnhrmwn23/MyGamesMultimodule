@@ -1,5 +1,6 @@
-package com.onedev.mygamesmultimodule
+package com.onedev.mygamesmultimodule.di
 
+import com.onedev.mygamesmultimodule.games.GamesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
