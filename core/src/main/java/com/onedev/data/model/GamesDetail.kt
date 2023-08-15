@@ -1,21 +1,14 @@
 package com.onedev.data.model
 
 data class GamesDetail(
-    val count: Int?,
-    val results: List<Result>?
-) {
-    data class Result(
-        val background_image: String? = "",
-        val id: Int? = 0,
-        val name: String? = "",
-        val rating: Double?,
-        val rating_top: Int?,
-        val released: String? = "",
-        val slug: String? = "",
-        val stores: List<String>?= emptyList(),
-        val tags: List<String>?= emptyList(),
-        val short_screenshots: List<String>?= emptyList(),
-        val parent_platforms: List<String>? = emptyList(),
-        val genres: List<String>? = emptyList(),
-    )
-}
+    val backgroundImage: String? = "",
+    val descriptionRaw: String? = "",
+    val genres: String = "",
+    val id: Int? = 0,
+    val name: String? = "",
+    val playtime: Int? = 0,
+    val publishers: String = "",
+    val rating: Double? = 0.0,
+    val released: String? = "",
+    val tags: String = "",
+)

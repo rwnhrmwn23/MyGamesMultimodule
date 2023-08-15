@@ -1,4 +1,4 @@
-package com.onedev.mygamesmultimodule.games
+package com.onedev.mygamesmultimodule.favorite
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.onedev.data.model.Games
 import com.onedev.mygamesmultimodule.databinding.LayoutItemGamesBinding
 
-class GamesAdapter :
-    RecyclerView.Adapter<GamesAdapter.ViewHolder>() {
+class FavoriteAdapter :
+    RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
 
     private var datas = ArrayList<Games.Result>()
     var onItemClick: ((Games.Result) -> Unit)? = null

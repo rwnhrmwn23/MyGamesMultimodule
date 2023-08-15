@@ -2,6 +2,7 @@ package com.onedev.mygamesmultimodule
 
 import android.os.Bundle
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.onedev.mygamesmultimodule.databinding.ActivityMainBinding
 import com.onedev.mygamesmultimodule.utils.BaseActivityBinding
@@ -15,7 +16,8 @@ class MainActivity : BaseActivityBinding<ActivityMainBinding>() {
     }
 
     override fun onCreateBinding(savedInstanceState: Bundle?) {
-        val navController = findNavController(R.id.menuBottomNavigationFragment)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.menuBottomNavigationFragment) as NavHostFragment
+        val navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {

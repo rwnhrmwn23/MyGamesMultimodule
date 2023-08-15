@@ -13,7 +13,10 @@ interface GamesDao {
     @Delete
     suspend fun deleteGames(gamesEntity: GamesEntity)
 
-    @Query("SELECT * FROM tb_games ORDER BY id ASC")
+    @Query("SELECT * FROM tb_games")
     fun readAllGame(): Flow<List<GamesEntity>>
+
+    @Query("SELECT * FROM tb_games WHERE gamesId = :id")
+    fun checkGameIsFavorite(id: Int): Flow<GamesEntity>
 
 }

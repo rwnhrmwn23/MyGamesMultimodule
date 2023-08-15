@@ -1,15 +1,19 @@
 package com.onedev.domain
 
 import com.onedev.data.model.Games
+import com.onedev.data.model.GamesDetail
 import com.onedev.utils.StateEvent
 import kotlinx.coroutines.flow.Flow
 
-interface GamesUseCase {
+interface GameUseCase {
     fun games(search : String): Flow<StateEvent<Games>>
+
+    fun gamesDetail(id: Int): Flow<StateEvent<GamesDetail>>
 
     suspend fun addGames(games: Games.Result)
 
     suspend fun deleteGames(games: Games.Result)
 
     fun readAllData(): Flow<Games>
+    fun checkGameIsFavorite(id: Int): Flow<Games.Result>
 }

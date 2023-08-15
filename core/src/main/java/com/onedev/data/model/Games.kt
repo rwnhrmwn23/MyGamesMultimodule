@@ -5,11 +5,10 @@ data class Games(
     val results: List<Result>? = emptyList()
 ) {
     data class Result(
-        val background_image: String? = "",
+        val backgroundImage: String? = "",
         val id: Int? = 0,
         val name: String? = "",
         val rating: Double? = 0.0,
         val released: String? = "",
-        val short_screenshots: String? = "",
     )
 }

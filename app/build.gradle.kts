@@ -71,4 +71,7 @@ dependencies {
 
     // Skeleton
     implementation(libs.skeleton)
+
+    // Read More Text
+    implementation(libs.readmore.text)
 }

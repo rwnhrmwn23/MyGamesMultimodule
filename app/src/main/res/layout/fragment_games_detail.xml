@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="games"
+            type="com.onedev.data.model.GamesDetail" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".games_detail.GamesDetailFragment">
+
+        <ImageView
+            android:id="@+id/img_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_img_back_button"
+            android:contentDescription="@string/back_button"
+            android:elevation="5dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_round_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_favorite_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_img_back_button"
+            android:contentDescription="@string/favorite"
+            android:elevation="5dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_round_favorite_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:contentDescription="@string/games_for_you"
+                    android:loadImage="@{games.backgroundImage}"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/tv_publisher"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_marginTop="8dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins"
+                    android:maxLines="1"
+                    android:text="@{games.publishers}"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_background"
+                    tools:text="Rockstar" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins"
+                    android:text="@{games.name}"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/tv_publisher"
+                    app:layout_constraintStart_toStartOf="@+id/tv_publisher"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_publisher"
+                    tools:text="@string/app_name" />
+
+                <TextView
+                    android:id="@+id/tv_released_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins"
+                    android:maxLines="1"
+                    android:text="@{@string/released_date(games.released)}"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_name"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                    tools:text="Released date" />
+
+                <TextView
+                    android:id="@+id/tv_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:drawablePadding="4dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="@{games.rating.toString()}"
+                    android:textSize="12sp"
+                    app:drawableStartCompat="@drawable/ic_round_star"
+                    app:layout_constraintStart_toStartOf="@+id/tv_released_date"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_released_date"
+                    tools:text="4.4" />
+
+                <TextView
+                    android:id="@+id/tv_played"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:drawablePadding="4dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="@{games.playtime.toString()}"
+                    android:textSize="12sp"
+                    app:drawableStartCompat="@drawable/ic_round_games"
+                    app:layout_constraintStart_toEndOf="@+id/tv_rating"
+                    app:layout_constraintTop_toTopOf="@+id/tv_rating"
+                    tools:text="400 Played" />
+
+                <kr.co.prnd.readmore.ReadMoreTextView
+                    android:id="@+id/tv_description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="@{games.descriptionRaw}"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_name"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_rating"
+                    app:readMoreText="More"
+                    tools:text="@tools:sample/lorem" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

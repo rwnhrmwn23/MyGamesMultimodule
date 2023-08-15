@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.onedev.mygamesmultimodule.R
 import com.onedev.mygamesmultimodule.databinding.FragmentGamesBinding
@@ -47,7 +48,6 @@ class GamesFragment : BaseFragmentBinding<FragmentGamesBinding>() {
                 }
             }
         })
-
         gamesAdapter.onItemClick = {
             val action = GamesFragmentDirections.actionGamesFragmentToGamesDetailFragment(it.id ?: 0)
             findNavController().navigate(action)

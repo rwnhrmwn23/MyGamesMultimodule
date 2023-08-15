@@ -18,6 +18,7 @@ coroutines = "1.7.1"
 lifecycle = "2.6.1"
 coil = "2.4.0"
 skeleton = "1.0.0-beta01"
+readmore-text = "1.0.0"
 
 [libraries]
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
@@ -44,8 +45,7 @@ lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata-ktx", ver
 lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 skeleton = { module = "com.ericktijerou.koleton:koleton", version.ref = "skeleton" }
-
-#implementation 'com.google.code.gson:gson:2.9.0'
+readmore-text = { module = "kr.co.prnd:readmore-textview", version.ref = "readmore-text" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }

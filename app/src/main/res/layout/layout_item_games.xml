@@ -22,7 +22,7 @@
             android:id="@+id/img_background"
             android:layout_width="125dp"
             android:layout_height="75dp"
-            android:loadImage="@{games.background_image}"
+            android:loadImage="@{games.backgroundImage}"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

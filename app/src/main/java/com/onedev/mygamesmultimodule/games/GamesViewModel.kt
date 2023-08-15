@@ -2,17 +2,8 @@ package com.onedev.mygamesmultimodule.games
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
-import com.onedev.data.model.Games
-import com.onedev.domain.GamesUseCase
-import kotlinx.coroutines.launch
+import com.onedev.domain.GameUseCase
 
-class GamesViewModel(private val gamesUseCase: GamesUseCase): ViewModel() {
-    fun fetchGames(search : String) = gamesUseCase.games(search).asLiveData()
-
-    fun insertGames(games: Games.Result) {
-        viewModelScope.launch {
-            gamesUseCase.addGames(games)
-        }
-    }
+class GamesViewModel(private val gameUseCase: GameUseCase): ViewModel() {
+    fun fetchGames(search : String) = gameUseCase.games(search).asLiveData()
 }

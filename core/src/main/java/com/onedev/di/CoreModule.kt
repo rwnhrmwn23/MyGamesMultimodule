@@ -4,7 +4,7 @@ import androidx.room.Room
 import com.onedev.data.repository.GameRepository
 import com.onedev.data.repository.GameRepositoryImpl
 import com.onedev.domain.GameUseCaseImpl
-import com.onedev.domain.GamesUseCase
+import com.onedev.domain.GameUseCase
 import com.onedev.local.database.GameDatabase
 import com.onedev.local.LocalDataSource
 import com.onedev.network.BuildConfig
@@ -46,7 +46,7 @@ val databaseModule = module {
 }
 
 val useCaseModule = module {
-    factory<GamesUseCase> {
+    factory<GameUseCase> {
         GameUseCaseImpl(get())
     }
 }

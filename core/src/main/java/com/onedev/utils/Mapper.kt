@@ -1,7 +1,9 @@
 package com.onedev.utils
 
 import com.onedev.data.model.Games
+import com.onedev.data.model.GamesDetail
 import com.onedev.local.database.entity.GamesEntity
+import com.onedev.network.response.GamesDetailResponse
 import com.onedev.network.response.GamesResponse
 
 object Mapper {
@@ -10,20 +12,13 @@ object Mapper {
         val gamesResult = ArrayList<Games.Result>()
 
         this?.results?.map {
-            val gamesScreenshot = ArrayList<String>()
-
-            it?.short_screenshots?.map {screenshots ->
-               gamesScreenshot.add(screenshots.image.toString())
-            }
-
             gamesResult.add(
                 Games.Result(
-                    background_image = it?.background_image,
+                    backgroundImage = it?.background_image,
                     id = it?.id,
                     name = it?.name,
                     rating = it?.rating,
                     released = it?.released,
-                    short_screenshots = gamesScreenshot.toString()
                 )
             )
 
@@ -33,36 +28,72 @@ object Mapper {
         return games
     }
 
-    fun List<GamesEntity>.mapEntitiesToDomains(): Games {
+    fun GamesDetailResponse?.mapToGamesDetail(): GamesDetail {
+        val gameGenres = ArrayList<String>()
+        val gamePublishers = ArrayList<String>()
+        val gameTags = ArrayList<String>()
+
+        this?.let {
+            genres?.map { data ->
+                gameGenres.add(data.name.toString())
+            }
+
+            publishers?.map { data ->
+                gamePublishers.add(data.name.toString())
+            }
+
+            tags?.map { data ->
+                gameTags.add(data.name.toString())
+            }
+        }
+
+        return GamesDetail(
+            backgroundImage = this?.background_image,
+            descriptionRaw = this?.description_raw,
+            genres = gameGenres.joinToString(),
+            id = this?.id,
+            name = this?.name,
+            playtime = this?.playtime,
+            publishers = gamePublishers.joinToString(),
+            rating = this?.rating,
+            released = this?.released,
+            tags = gameTags.joinToString()
+        )
+    }
+
+    fun List<GamesEntity>?.mapEntitiesToDomains(): Games {
         var games = Games()
+        val gamesResult = ArrayList<Games.Result>()
 
-        this.map {
-            val gamesResult = ArrayList<Games.Result>()
-
+        this?.map {
             gamesResult.add(
                 Games.Result(
-                    background_image = it.backgroundImage,
-                    id = it.id,
+                    backgroundImage = it.backgroundImage,
+                    id = it.gamesId,
                     name = it.name,
                     rating = it.rating,
                     released = it.released,
-                    short_screenshots = it.shortScreenshots
                 )
             )
-
             games = Games(this.size, gamesResult)
         }
 
         return games
     }
 
+    fun GamesEntity?.mapEntityToDomainsResult() = Games.Result(
+        backgroundImage = this?.backgroundImage,
+        id = this?.gamesId,
+        name = this?.name,
+        rating = this?.rating,
+        released = this?.released,
+    )
+
     fun Games.Result.mapDomainToEntity() = GamesEntity(
-        id = 0,
         gamesId = id ?: 0,
-        backgroundImage = background_image.toString(),
+        backgroundImage = backgroundImage.toString(),
         name = name.toString(),
         rating = rating ?: 0.0,
         released = released.toString(),
-        shortScreenshots = short_screenshots.toString(),
     )
 }

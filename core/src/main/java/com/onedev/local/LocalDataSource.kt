@@ -10,5 +10,6 @@ class LocalDataSource(private val gamesDao: GamesDao) {
     suspend fun deleteGames(heroEntities: GamesEntity) = gamesDao.deleteGames(heroEntities)
 
     fun readAllData() = gamesDao.readAllGame()
+    fun checkGameIsFavorite(id: Int) = gamesDao.checkGameIsFavorite(id)
 
 }
