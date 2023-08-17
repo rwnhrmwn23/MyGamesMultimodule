@@ -14,11 +14,11 @@ object Mapper {
         this?.results?.map {
             gamesResult.add(
                 Games.Result(
-                    backgroundImage = it?.background_image,
-                    id = it?.id,
-                    name = it?.name,
-                    rating = it?.rating,
-                    released = it?.released,
+                    backgroundImage = it.background_image,
+                    id = it.id,
+                    name = it.name,
+                    rating = it.rating,
+                    released = it.released,
                 )
             )
 

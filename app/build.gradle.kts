@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.com.google.devtools.ksp)
     id("androidx.navigation.safeargs.kotlin")
     kotlin("kapt") version "1.8.0"
 }
@@ -55,8 +56,13 @@ dependencies {
     testImplementation(libs.mockito.inline)
     testImplementation(libs.core.testing)
     testImplementation(libs.coroutines.test)
-    androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.mockito.core)
+    androidTestImplementation(libs.mockito.inline)
+    androidTestImplementation(libs.core.testing)
+    androidTestImplementation(libs.coroutines.test)
+    androidTestImplementation(libs.androidx.test.ext.junit)
 
     // Koin
     implementation(libs.koin.core)
@@ -78,4 +84,10 @@ dependencies {
 
     // Read More Text
     implementation(libs.readmore.text)
+
+    // Room components
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.kapt)
+    androidTestImplementation(libs.room.test)
 }

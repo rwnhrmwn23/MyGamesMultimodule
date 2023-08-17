@@ -4,14 +4,13 @@ data class GamesResponse(
     val count: Int?,
     val next: String?,
     val previous: Any?,
-    val results: List<Result?>?
+    val results: List<Result>?
 ) {
     data class Result(
         val background_image: String?,
         val id: Int?,
         val name: String?,
         val rating: Double?,
-        val rating_top: Int?,
         val released: String?
     )
 }

@@ -10,7 +10,6 @@ data class GamesDetailResponse(
     val playtime: Int?,
     val publishers: List<Publisher>?,
     val rating: Double?,
-    val rating_top: Int?,
     val released: String?,
     val tags: List<Tag>?,
     val website: String?
